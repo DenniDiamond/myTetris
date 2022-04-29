@@ -18,6 +18,9 @@ export class Controller {
 
     start() {
         this.view.showArea(this.game.viewArea);
+        this.view.createBlockScore();
+        this.view.createBlockNextTetromino();
+
         setInterval(() => {
             this.game.moveDown();
             this.view.showArea(this.game.viewArea);

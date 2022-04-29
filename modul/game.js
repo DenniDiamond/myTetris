@@ -5,6 +5,10 @@ import { ROWS } from "../index.js";
 import { COLUMS } from "../index.js";
 
  export class Game {
+     score = 0;
+     lines = 0;
+     lvl = 1;
+     record = localStorage.getItem('tet-rec') || 0 ;
     area = [
         ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
         ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
