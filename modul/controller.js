@@ -1,9 +1,7 @@
 export class Controller {
-    constructor(game, view) {
+    constructor (game, view) {
         this.game = game;
         this.view = view;
-
-        this.view.init();
     }
 
     init(codeKey) {
@@ -18,13 +16,21 @@ export class Controller {
 
     start() {
         this.view.showArea(this.game.viewArea);
-        this.view.createBlockScore();
-        this.view.createBlockNextTetromino();
+        const showScore = this.view.createBlockScore();
+        const showNextTetromino =  this.view.createBlockNextTetromino();
+        this.game.createUpdatePanels(showScore, showNextTetromino);
 
-        setInterval(() => {
-            this.game.moveDown();
-            this.view.showArea(this.game.viewArea);
-        }, 500);
+          const tick = () => {
+              const time = (1100 - 100 * this.game.level);
+              if (this.game.gameOver) return;
+            setTimeout(() => {
+                this.game.moveDown();
+                this.view.showArea(this.game.viewArea);
+                tick()
+            }, time > 100 ? time : 100);
+        };
+
+        tick();
 
         window.addEventListener('keydown', (e) => {
             const key = e.code;

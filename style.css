@@ -17,8 +17,8 @@ body {
     gap: 50px;
     align-items: flex-start;
     grid-template-areas: 
-    'score game' 
-    'next game' ;
+    'next game'
+    'score game' ;
 }
 .game-area {
     border: solid black;
